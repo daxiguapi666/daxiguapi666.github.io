@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole Game</title>
+    <style>
+        .hole {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Whack-a-Mole Game</h1>
+    <p>Click on the moles to earn points within 30 seconds!</p>
+    <p>Score: <span id="score">0</span></p>
+    <div id="game">
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+    </div>
+
+    <script>
+        var score = 0;
+        var timeLeft = 30;
+
+        function startGame() {
+            setInterval(function() {
+                timeLeft--;
+                if (timeLeft < 0) {
+                    alert('Game over! Your final score is ' + score);
+                    clearInterval();
+                }
+                document.getElementById('score').textContent = score;
+            }, 1000);
+
+            setInterval(function() {
+                var holes = document.getElementsByClassName('hole');
+                var randomIndex = Math.floor(Math.random() * holes.length);
+                var mole = holes[randomIndex];
+                mole.textContent = '🐭';
+                setTimeout(function() {
+                    mole.textContent = '';
+                }, 2000);
+            }, 2000);
+        }
+
+        function whack(mole) {
+            if (mole.textContent === '🐭') {
+                score++;
+                mole.textContent = '';
+            }
+        }
+    </script>
+
+    <button onclick="startGame()">Start Game</button>
+</body>
+</html>
