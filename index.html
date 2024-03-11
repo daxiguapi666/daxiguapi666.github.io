@@ -28,19 +28,43 @@ a {
 a:hover {
     text-decoration: underline;
 }
-ul {
-    list-style-type: none;
-    padding: 0;
+.notice {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 20px;
 }
-li {
+input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 16px;
+}
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #0056b3;
 }
 </style>
 </head>
 <body>
 <div class="container">
 <h1>欢迎来到我的网站~</h1>
-<p>这是西瓜/阿黄的网站，内容持续更新中，欢迎访问！更新日志2024.3.10：写入了几个转载的小游戏和两个自制的游戏，来试试吧！      请记住西瓜的网址： —— <a href="https://daxiguapi666.github.io" target="_blank">daxiguapi666.github.io</a></p>
+<div class="notice">
+    <h2>更新日志</h2>
+    <p>2024.3.10：写入了几个转载的小游戏和两个自制的游戏，来试试吧！</p>
+    <p>2024.3.11：加入了隐藏游戏系统，来试试吧！</p>
+</div>
+<p>这是西瓜/阿黄的网站，内容持续更新中，欢迎访问！请记住西瓜的网址： —— <a href="https://daxiguapi666.github.io" target="_blank">daxiguapi666.github.io</a></p>
 
 <h2>小游戏合集：</h2>          
 <ul>
@@ -52,6 +76,20 @@ li {
   <li><a href="https://play-dot-to.com/" target="_blank">连连看（转）</a></li>
   <li><a href="https://www.html5tricks.com/demo/html5-fruit-ninja/index.html" target="_blank">水果忍者（转）</a></li>
 </ul>
+
+<input type="text" id="inputNumber" placeholder="输入隐藏码">
+<button onclick="goToPage()">转到页面</button>
+
+<script>
+function goToPage() {
+    var number = document.getElementById("inputNumber").value;
+    if (number === "sport") {
+        window.location.href = "sport.html";
+    } else {
+       alert("输入的隐藏码无效");
+    }
+}
+</script>
 </div>
 </body>
 </html>
