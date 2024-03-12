@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猜数字游戏</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    color: #007bff;
+}
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>西瓜猜数字游戏2.0</h1>
+    <p>西瓜已经准备好了一个1到100之间的随机数字，快来猜一猜吧！</p>
+    <input type="text" id="guess" placeholder="请输入你的猜测">
+    <button onclick="checkGuess()">猜一猜</button>
+    <p id="message"></p>
+</div>
+
+<script>
+// 生成1到100之间的随机数字
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+
+function checkGuess() {
+    let guess = document.getElementById("guess").value;
+    guess = parseInt(guess);
+    attempts++;
+
+    if (guess === randomNumber) {
+        document.getElementById("message").innerHTML = `恭喜你猜对了！你用了 ${attempts} 次尝试。`;
+        document.getElementById("message").style.color = "green";
+    } else if (guess < randomNumber) {
+        document.getElementById("message").innerHTML = "猜小了，请再试一次。";
+        document.getElementById("message").style.color = "orange";
+    } else {
+        document.getElementById("message").innerHTML = "猜大了，请再试一次。";
+        document.getElementById("message").style.color = "orange";
+    }
+}
+</script>
+</body>
+</html>
