@@ -21,13 +21,16 @@ body {
 h1 {
     color: #007bff;
 }
+
 a {
     color: #007bff;
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 .notice {
     background-color: #f8d7da;
     color: #721c24;
@@ -35,13 +38,14 @@ a:hover {
     padding: 10px;
     margin-bottom: 20px;
 }
-input[type="text"] {
+
+input[type="text"], textarea {
     padding: 8px;
     width: 200px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
     font-size: 16px;
 }
+
 button {
     padding: 8px 16px;
     background-color: #007bff;
@@ -51,8 +55,14 @@ button {
     font-size: 16px;
     border-radius: 4px;
 }
+
 button:hover {
     background-color: #0056b3;
+}
+
+.messages {
+    text-align: left;
+    margin-top: 20px;
 }
 </style>
 </head>
@@ -65,6 +75,8 @@ button:hover {
     <p>2024.3.11：加入了隐藏游戏系统，来试试吧！</p>
     <p>2024.3.11 二次更新：优化了主页的谷歌小恐龙，来试试吧！</p>
     <p>2024.3.12 19：31 ：预计今晚或明晚大更新，敬请期待！</p>
+    <p></p>
+    </p>2024.3.12  21：34  ：主页更新了留言与历史访问人数功能，自编小游戏优化，来试试吧！   PS：要隐藏码的留言我~  </p>
 </div>
 <p>这是西瓜/阿黄的网站，内容持续更新中，欢迎访问！请记住西瓜的网址： —— <a href="https://daxiguapi666.github.io" target="_blank">daxiguapi666.github.io</a></p>
 
@@ -75,22 +87,74 @@ button:hover {
   <li><a href="guess1.html" target="_blank">西瓜猜数字1.0</a></li>
   <li><a href="xiguachatroom.html" target="_blank">西瓜在线聊天室(调试中)</a></li>
   <li><a href="https://lab.hakim.se/core/" target="_blank">小球防御（转）</a></li>
-  <li><a href="https://play-dot-to.com/" target="_blank">连连看（转）</a></li>
+  <li><a href="https://play-dot-to.com/" target="_blank">连联看（转）</a></li>
   <li><a href="https://www.html5tricks.com/demo/html5-fruit-ninja/index.html" target="_blank">水果忍者（转）</a></li>
 </ul>
 
+<h2>留言板：</h2>
+<input type="text" id="inputName" placeholder="姓名">
+<textarea id="inputMessage" placeholder="输入留言"></textarea>
+<button onclick="saveMessage()">留言</button>
+
+<div class="messages" id="messages"></div>
+
+<h2>隐藏码：</h2>
 <input type="text" id="inputNumber" placeholder="输入隐藏码">
 <button onclick="goToPage()">转到页面</button>
 
+<h2>网站访问次数：</h2>
+<p id="visitCount">0</p>
+
 <script>
+function saveMessage() {
+    var name = document.getElementById("inputName").value;
+    var message = document.getElementById("inputMessage").value;
+
+    var existingMessages = localStorage.getItem("messages");
+    if(existingMessages) {
+        existingMessages = JSON.parse(existingMessages);
+    } else {
+        existingMessages = [];
+    }
+
+    existingMessages.push({name: name, message: message});
+    localStorage.setItem("messages", JSON.stringify(existingMessages));
+
+    displayMessages();
+}
+
+function displayMessages() {
+    var messagesDiv = document.getElementById("messages");
+    var messages = JSON.parse(localStorage.getItem("messages"));
+
+    messagesDiv.innerHTML = "";
+    if(messages) {
+        messages.forEach(function(item) {
+            var messageDiv = document.createElement("div");
+            messageDiv.innerHTML = "<strong>" + item.name + "</strong>: " + item.message;
+            messagesDiv.appendChild(messageDiv);
+        });
+    }
+}
+
 function goToPage() {
     var number = document.getElementById("inputNumber").value;
     if (number === "sport") {
         window.location.href = "sport.html";
     } else {
-       alert("输入的隐藏码无效");
+        alert("输入的隐藏码无效");
     }
 }
+
+function updateVisitCount() {
+    var count = localStorage.getItem("visitCount") || 0;
+    count = parseInt(count);
+    count++;
+    document.getElementById("visitCount").innerText = count;
+    localStorage.setItem("visitCount", count);
+}
+
+updateVisitCount();
 </script>
 </div>
 </body>
