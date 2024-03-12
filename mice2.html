@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西瓜打地鼠2.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .game-info {
+            margin-bottom: 20px;
+        }
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .hole {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>西瓜打地鼠2.0</h1>
+    <div class="game-info">
+        <p>点击地鼠即可在30秒内获得积分！</p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="game">
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+        <div class="hole" onclick="whack(this)"></div>
+    </div>
+
+    <button onclick="startGame()">Start Game</button>
+
+    <script>
+        var score = 0;
+        var timeLeft = 30;
+        var gameTimer;
+        var moleTimer;
+
+        function startGame() {
+            if (gameTimer) clearInterval(gameTimer);
+            if (moleTimer) clearInterval(moleTimer);
+
+            score = 0;
+            timeLeft = 30;
+
+            gameTimer = setInterval(function() {
+                timeLeft--;
+                if (timeLeft < 0) {
+                    endGame();
+                }
+                document.getElementById('score').textContent = score;
+            }, 1000);
+
+            moleTimer = setInterval(function() {
+                var holes = document.getElementsByClassName('hole');
+                var randomIndex = Math.floor(Math.random() * holes.length);
+                var mole = holes[randomIndex];
+                mole.textContent = '🐭';
+                setTimeout(function() {
+                    mole.textContent = '';
+                }, 1500);
+            }, 2000);
+        }
+
+        function endGame() {
+            clearInterval(gameTimer);
+            clearInterval(moleTimer);
+            alert('Game over! Your final score is ' + score);
+        }
+
+        function whack(mole) {
+            if (mole.textContent === '🐭') {
+                score++;
+                mole.textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>
