@@ -1,96 +1,141 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>欢迎来到我的网站</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-h1 {
-    color: #007bff;
-}
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-.notice {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-input[type="text"] {
-    padding: 8px;
-    width: 200px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-}
-button:hover {
-    background-color: #0056b3;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.3); /* 背景颜色遮罩 */
+        }
+        h1 {
+            color: #007bff;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+        .notice {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .game-section {
+            margin-top: 20px;
+        }
+        .game-section h2 {
+            margin-bottom: 10px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        #hidden-code-container {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<h1>欢迎来到我的网站~</h1>
-<div class="notice">
-    <h2>更新日志</h2>
-    <p>2024.3.10：写入了几个转载的小游戏和两个自制的游戏，来试试吧！</p>
-    <p>2024.3.11：加入了隐藏游戏系统，来试试吧！</p>
-    <p>2024.3.12：预计周五或下周一大更新</p>
-</div>
-<p>这是西瓜/阿黄的网站，内容持续更新中，欢迎访问！请记住西瓜的网址： —— <a href="https://daxiguapi666.github.io" target="_blank">daxiguapi666.github.io</a></p>
+    <div class="container">
+        <h1>欢迎来到我的网站~</h1>
+        <div class="notice">
+            <h2>更新日志</h2>
+            <p>2024.3.10：写入了几个转载的小游戏和两个自制的游戏，来试试吧！</p>
+            <p>2024.3.11：加入了隐藏游戏系统，来试试吧！</p>
+            <p>2024.3.20  9：03 大更新~：写入了一个自制的文本加密工具，优化了主页模块。加入了主页的背景，调了淡化效果。主页模块化，优化并推出西瓜打地鼠、西瓜猜数字第二弹</p>
+            <p>  可以听音乐啦~   PS:隐藏码的话在文本加密工具将tqpsu解密一次即可~ </p> 
+            <p>2024.3.20  大更新~（补）：请关注一下B站的xiu瓜皮啦~跳转按钮在自编小游戏区</p> 
+        </div>
+        <p>这是西瓜/阿黄的网站，内容持续更新中，欢迎访问！请记住西瓜的网址： —— <a href="https://daxiguapi666.github.io" target="_blank">daxiguapi666.github.io</a></p>
 
-<h2>小游戏合集：</h2>          
-<ul>
-  <li><a href="dino.html" target="_blank">谷歌小恐龙（转）</a></li>
-  <li><a href="mice1.html" target="_blank">西瓜打地鼠1.0</a></li>
-  <li><a href="guess1.html" target="_blank">西瓜猜数字1.0</a></li>
-  <li><a href="xiguachatroom.html" target="_blank">西瓜在线聊天室(调试中)</a></li>
-  <li><a href="https://lab.hakim.se/core/" target="_blank">小球防御（转）</a></li>
-  <li><a href="https://play-dot-to.com/" target="_blank">连连看（转）</a></li>
-  <li><a href="https://www.html5tricks.com/demo/html5-fruit-ninja/index.html" target="_blank">水果忍者（转）</a></li>
-</ul>
+        <div class="game-section" id="self-made-games">
+            <h2>自编小游戏：</h2>
+            <ul class="game-list">
+                <li><a href="mice1.html" target="_blank">西瓜打地鼠1.0</a></li>
+	<li><a href="mice2.html" target="_blank">西瓜打地鼠2.0</a></li>
+                <li><a href="guess1.html" target="_blank">西瓜猜数字1.0</a></li>
+	<li><a href="guess2.html" target="_blank">西瓜猜数字2.0</a></li>
+·	<li><a href="code1.html" target="_blank">西瓜文本加密工具1.0</a></li>
+                <li><a href="xiguachatroom.html" target="_blank">西瓜在线聊天室(调试中)</a></li>
+	<li><a href="https://search.bilibili.com/upuser?keyword=xiu%E7%93%9C%E7%9A%AE&from_source=webtop_search&spm_id_from=333.788&search_source=3" target="_blank">西瓜的B站</a></li>
+            </ul>
+        </div>
 
-<input type="text" id="inputNumber" placeholder="输入隐藏码">
-<button onclick="goToPage()">转到页面</button>
+        <div class="game-section" id="reposted-games">
+            <h2>转载小游戏：</h2>
+            <ul class="game-list">
+                <li><a href="dino.html" target="_blank">谷歌小恐龙（转）</a></li>
+                <li><a href="https://lab.hakim.se/core/" target="_blank">小球防御（转）</a></li>
+                <li><a href="https://play-dot-to.com/" target="_blank">连连看（转）</a></li>
+                <li><a href="https://www.html5tricks.com/demo/html5-fruit-ninja/index.html" target="_blank">水果忍者（转）</a></li>
+            </ul>
+        </div>
 
-<script>
-function goToPage() {
-    var number = document.getElementById("inputNumber").value;
-    if (number === "sport") {
-        window.location.href = "sport.html";
-    } else {
-       alert("输入的隐藏码无效");
-    }
-}
-</script>
-</div>
-</body>
-</html>
+        <div id="hidden-code-container" class="game-section">
+            <h2>隐藏码解锁</h2>
+            <p>输入隐藏码以解锁更多内容：</p>
+            <input type="text" id="inputNumber" placeholder="输入隐藏码">
+            <button onclick="goToPage()">解锁</button>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h1>欢迎来到我的音乐区~</h1>
+
+        <h2>Empty love</h2>
+        <audio controls>
+            <source src="emptylove.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <h2>Cure for me</h2>
+        <audio controls>
+            <source src="cureforme.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+ 
