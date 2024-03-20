@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加密解密页面</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+input[type="text"] {
+    padding: 8px;
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+textarea {
+    padding: 8px;
+    width: 400px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>西瓜在线文本加密工具1.0</h1>
+    <input type="text" id="inputText" placeholder="输入要加密/解密的内容">
+    <br>
+    <button onclick="encrypt()">加密</button>
+    <button onclick="decrypt()">解密</button>
+    <button onclick="inputEncryptedText()">将结果作输入</button>
+    <br>
+    <textarea id="result" placeholder="结果将显示在这里"></textarea>
+</div>
+
+<script>
+function encrypt() {
+    var inputText = document.getElementById("inputText").value;
+    var result = "";
+    for (var i = 0; i < inputText.length; i++) {
+        result += String.fromCharCode(inputText.charCodeAt(i) + 1);
+    }
+    document.getElementById("result").value = result;
+}
+
+function decrypt() {
+    var inputText = document.getElementById("inputText").value;
+    var result = "";
+    for (var i = 0; i < inputText.length; i++) {
+        result += String.fromCharCode(inputText.charCodeAt(i) - 1);
+    }
+    document.getElementById("result").value = result;
+}
+
+function inputEncryptedText() {
+    var inputText = document.getElementById("result").value;
+    document.getElementById("inputText").value = inputText;
+}
+</script>
+</body>
+</html>
