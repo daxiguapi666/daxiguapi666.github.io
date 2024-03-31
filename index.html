@@ -117,14 +117,22 @@
             </ul>
         </div>
 
-        <div id="hidden-code-container" class="game-section">
-            <h2>隐藏码解锁</h2>
-            <p>输入隐藏码以解锁更多内容：</p>
-            <input type="text" id="inputNumber" placeholder="输入隐藏码">
-            <button onclick="goToPage()">解锁</button>
-        </div>
+        <input type="text" id="inputNumber" placeholder="输入隐藏码">
+<button onclick="goToPage()">转到页面</button>
 
-    </div>
+<script>
+function goToPage() {
+    var number = document.getElementById("inputNumber").value;
+    if (number === "sport") {
+        window.location.href = "sport.html";
+    } else {
+       alert("输入的隐藏码无效");
+    }
+}
+</script>
+</div>
+</body>
+</html>
 
     <div class="container">
         <h1>欢迎来到我的音乐区~</h1>
